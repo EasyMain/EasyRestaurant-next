@@ -4,7 +4,11 @@ export default function Web() {
   return (
     <div>
       <h1>Web</h1>
-      <Button />
+      <Button onPress={() => console.log('is clicked')}
+        type="reset"
+      >
+        Prueba
+      </Button>
     </div>
   );
 }
