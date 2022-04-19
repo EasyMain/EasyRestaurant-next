@@ -1,8 +1,12 @@
-import { AppProps } from "next/app";
+import { SSRProvider } from "ui";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: any) {
-  return <Component {...pageProps} />;
+  return (
+    <SSRProvider>
+      <Component {...pageProps} />;
+    </SSRProvider>
+  );
 }
 
 export default MyApp;
