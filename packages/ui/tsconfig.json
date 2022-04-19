@@ -1,5 +1,5 @@
 {
   "extends": "tsconfig/ui.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "coverage", "build", "node_modules", "jest.config.js"]
 }
