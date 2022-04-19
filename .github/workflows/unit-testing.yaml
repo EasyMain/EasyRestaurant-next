@@ -1,4 +1,4 @@
-name: root
+name: Run Unit Test
 
 on:
   push:

@@ -5,7 +5,7 @@ import { getCurrentRef } from "../utils/getCurrentRef";
 
 interface InputBaseProps extends AriaTextFieldOptions<"input"> {
   multiline?: boolean;
-  rightNode?: React.ReactNode;
+  rightNode?: JSX.Element;
 }
 
 const InputBase = React.forwardRef(
