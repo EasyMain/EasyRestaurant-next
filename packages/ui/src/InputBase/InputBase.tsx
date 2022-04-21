@@ -33,7 +33,14 @@ const InputBase = React.forwardRef(
     React.useImperativeHandle(ref, getCurrentRef(inputRef));
 
     const Input = React.useCallback(
-      (props) => (multiline ? <textarea {...props} /> : <input {...props} />),
+      React.forwardRef(
+        (props: any, ref: React.ForwardedRef<HTMLInputElement>) =>
+          multiline ? (
+            <textarea ref={ref} {...props} />
+          ) : (
+            <input ref={ref} {...props} />
+          )
+      ),
       [multiline]
     );
 
@@ -46,7 +53,10 @@ const InputBase = React.forwardRef(
                       before:absolute before:bottom-0 before:left-0 before:w-full
                       before:hover:bg-black before:hover:h-0.5 before:-z-50
                       before:transition-all
-                      ${isDisabled && "after:scale-x-0 before:hover:h-[1.5px] before:hover:before:bg-black/[12%]"}
+                      ${
+                        isDisabled &&
+                        "after:scale-x-0 before:hover:h-[1.5px] before:hover:before:bg-black/[12%]"
+                      }
                       after:content-[''] after:w-full after:scale-x-0 after:bg-primary 
                       after:absolute after:left-0 after:bottom-0 after:z-10 after:h-0.5
                       after:origin-center after:transition-transform after:duration-300  
@@ -62,7 +72,11 @@ const InputBase = React.forwardRef(
                        outline-none shadow-outline-blue
                        text-black/[87%] disabled:cursor-not-allowed"
           />
-          {rightNode && <div className={`p-2 ${errorMessage && "text-red-500"}`}>{rightNode}</div>}
+          {rightNode && (
+            <div className={`p-2 ${errorMessage && "text-red-500"}`}>
+              {rightNode}
+            </div>
+          )}
           <label
             {...labelProps}
             className={`absolute left-0 -top-4 w-full -z-10 origin-left

@@ -6,7 +6,7 @@ module.exports = {
   roots: [fromRoot('packages/ui')],
   resetMocks: true,
   coveragePathIgnorePatterns: [],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts,tsx}'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
   coverageThreshold: null,
   testEnvironment: 'jsdom',
   transform: {

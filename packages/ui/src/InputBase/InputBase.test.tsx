@@ -1,20 +1,27 @@
 // Create test for InputBase.tsx
 
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import loadTailwindConfigTesting from '../utils/loadTailwindConfigTesting';
 import { InputBase } from "./InputBase";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 describe("tests", () => {
+
   it("should", () => {
     render(<InputBase label="Description" />);
+    
     expect(screen.getByText("Description")).toBeInTheDocument();
   });
 
   it("should be disabled", () => {
-    render(<InputBase label="Description" isDisabled />);
-    expect(screen.getByText("Description")).toBeInTheDocument();
-    expect(screen.getByRole("textbox")).toBeDisabled();
+    const { container, debug } = render(<InputBase label="Description" isDisabled />);
+    loadTailwindConfigTesting();
+    const htmltag = document.querySelector("html");
+    console.log("TAG: ", htmltag);
+    console.log(document.querySelector("script")?.innerHTML);
+    // expect(screen.getByText("Description")).toBeInTheDocument();
+    // expect(screen.getByRole("textbox")).toBeDisabled();
+    // debug();
   });
 
   it("should have a right node", () => {
